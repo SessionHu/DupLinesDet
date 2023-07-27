@@ -20,7 +20,7 @@
 
 - 正常退出
   <details>
-  <summary>退出代码 - 0</summary>
+  <summary>退出代码 0</summary>
 
   ```
   info: 没有重复的行
@@ -31,7 +31,7 @@
 - 读取失败
   - 未输入文件名
     <details>
-    <summary>退出代码 - 1</summary>
+    <summary>退出代码 1</summary>
     <p>
       
     ```
@@ -42,7 +42,7 @@
     </details>
   - 文件名或路径有误
     <details>
-    <summary>退出代码 - 1</summary>
+    <summary>退出代码 1</summary>
     <p>
       
     ```
