@@ -16,16 +16,27 @@
 3.  若仅显示 `File name: ` 请输入被检测文件名
 
 
+## 自行构建
+
+1.  `git clone` 或 `下载本项目源代码`
+
+2. 运行 `buildjar.sh`
+
+3. 若无报错, `build/DuplicateLines.jar` 为构建的 `JAR` 包
+
+
 ## 提示信息
 
 - 正常退出
   <details>
   <summary>退出代码 0</summary>
-
+  <p>
+  
   ```
   info: 没有重复的行
   ```
-
+  
+  </p>
   </details>
     
 - 读取失败
@@ -33,7 +44,7 @@
     <details>
     <summary>退出代码 1</summary>
     <p>
-      
+    
     ```
     fatal: 文件名不能为空
     ```
@@ -44,13 +55,14 @@
     <details>
     <summary>退出代码 1</summary>
     <p>
-      
+    
     ```
     fatal: 无法读取文件
     ```
     
     </p>
     </details>
+
 
 ## 许可证
 
