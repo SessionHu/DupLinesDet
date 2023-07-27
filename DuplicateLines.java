@@ -9,13 +9,23 @@ import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class DuplicateLines {
-    public static void main(String[] args) {
+    public static void main(String... args) {
         // 创建 Scanner 对象，用于从控制台读取输入
         Scanner scanner = new Scanner(System.in);
-        // 提示输入文件名
-        System.out.print("File name: ");
-        // 读取输入的文件名
-        String fileName = scanner.nextLine();
+        // 定义文件名变量
+        String fileName;
+        // 检测命令行参数
+        if (args.length > 0) {
+            // 使用第一个参数作为文件名
+            fileName = args[0];
+            // 输出文件名
+            System.out.println("File name: "+fileName);
+        } else {
+            // 提示输入文件名
+            System.out.print("File name: ");
+            // 读取输入的文件名
+            fileName = scanner.nextLine();
+        }
         // 检查文件名是否为空
         if (fileName == null || fileName.trim().isEmpty()) {
             // 如果文件名为空，则输出错误并退出
