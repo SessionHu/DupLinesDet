@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -9,8 +10,9 @@ import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class DuplicateLines {
+    
     public static void main(String... args) {
-        // 创建 Scanner 对象，用于从控制台读取输入
+        // 创建 Scanner 对象, 用于从控制台读取输入
         Scanner scanner = new Scanner(System.in);
         // 定义文件名变量
         String fileName;
@@ -28,7 +30,7 @@ public class DuplicateLines {
         }
         // 检查文件名是否为空
         if (fileName == null || fileName.trim().isEmpty()) {
-            // 如果文件名为空，则输出错误并退出
+            // 输出错误并退出
             System.err.println("fatal: 文件名不能为空");
             System.exit(1);
         }
@@ -37,6 +39,12 @@ public class DuplicateLines {
         // 创建 AtomicInteger 记录当前的行号
         AtomicInteger lineNumber = new AtomicInteger(1);
         try {
+            // 检查文件是否为二进制文件
+            if (isBinaryFile(fileName)) {
+                // 输出错误并退出
+                System.err.println("fatal: 文件 " + fileName + " 是二进制文件");
+                System.exit(2);
+            }
             // 读取文件
             Files.lines(Paths.get(fileName))
                     // 跳过空行
@@ -63,4 +71,22 @@ public class DuplicateLines {
         }
         System.exit(0);
     }
+    
+    private static boolean isBinaryFile(String fileName) throws IOException {
+        // 使用 Files.newInputStream 方法创建 InputStream 对象, 用于读取文件
+        try (InputStream inputStream = Files.newInputStream(Paths.get(fileName))) {
+            int ch;
+            // 使用 read 方法读取文件中的字符
+            while ((ch = inputStream.read()) != -1) {
+                // 检查是否为非文本字符
+                if ((ch > 0x00 && ch < 0x09) || (ch > 0x0D && ch < 0x20) || ch == 0x7F) {
+                    // 是非文本字符返回true
+                    return true;
+                }
+            }
+        }
+        // 无非文本字符返回false
+        return false;
+    }
+
 }
