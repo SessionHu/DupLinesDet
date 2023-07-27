@@ -5,7 +5,7 @@
 
 ## 使用方法
 
-1.  在[Releases](https://github.com/SessionHu/DupLinesDet/releases/)处下载最新的 `JAR` 包
+1.  在 [Releases](https://github.com/SessionHu/DupLinesDet/releases/) 处下载最新的 `JAR` 包
 
 2.  在含有本项目的 `JAR` 包的目录下运行下面任意命令, *`DuplicateLines.jar` 为 `JAR` 包文件名, `file` 为被检测文件*
     ```bash
