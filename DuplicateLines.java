@@ -79,7 +79,7 @@ public class DuplicateLines {
             // 使用 read 方法读取文件中的字符
             while ((ch = inputStream.read()) != -1) {
                 // 检查是否为非文本字符
-                if ((ch > 0x00 && ch < 0x09) || (ch > 0x0D && ch < 0x20) || ch == 0x7F) {
+                if (ch < 0x09 || (ch > 0x0D && ch < 0x20) || ch == 0x7F) {
                     // 是非文本字符返回true
                     return true;
                 }
