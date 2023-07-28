@@ -9,3 +9,5 @@ echo -e "正在打包..."
 cp ./README.md ./LICENSE build/
 cd build/
 jar -cvfm 'DuplicateLines.jar' ../manifest -C ./ .
+
+cd ..
