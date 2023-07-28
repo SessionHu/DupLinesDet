@@ -9,8 +9,8 @@
 
 2.  在含有本项目的 `JAR` 包的目录下运行下面任意命令, *`DuplicateLines.jar` 为 `JAR` 包文件名, `file` 为被检测文件*
     ```bash
-    java -jar 'DuplicateLines.jar'
-    java -jar 'DuplicateLines.jar' 'file'
+    java -jar "DuplicateLines.jar"
+    java -jar "DuplicateLines.jar" "file"
     ```
 
 3.  若仅显示 `File name: ` 请输入被检测文件名
