@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -77,6 +78,11 @@ public class DuplicateLines {
             }
             // 返回文件名及路径
             return inputPath;
+        } catch (NoSuchElementException e) {
+            // 用户按下 Ctrl+D 的处理
+            System.err.println("\nfatal: 文件名不能为空");
+            System.exit(1);
+            return null; // 用于编译时防止报错
         }
     }
     
