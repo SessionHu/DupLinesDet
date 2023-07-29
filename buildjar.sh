@@ -1,11 +1,11 @@
-echo -e "正在处理上一次构建的内容..."
+echo -e "Processing files from last build..."
 rm -r build/
 mkdir build/
 
-echo -e "正在编译..."
+echo -e "Building..."
 javac -d build/ DuplicateLines.java
 
-echo -e "正在打包..."
+echo -e "Packing..."
 cp ./README.md ./LICENSE build/
 cd build/
 jar -cvfm 'DuplicateLines.jar' ../manifest -C ./ .
