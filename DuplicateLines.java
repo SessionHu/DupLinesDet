@@ -56,8 +56,8 @@ public class DuplicateLines {
     
     public static Path getFilePath(String... args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            // 定义文件路径变量
-            Path inputPath;
+            // 初始化文件路径变量
+            Path inputPath = null;
             // 检测命令行参数
             if (args.length > 0) {
                 // 使用第一个参数作为文件名
@@ -71,10 +71,13 @@ public class DuplicateLines {
                 inputPath = Paths.get(scanner.nextLine());
             }
             // 检查文件名是否为空
-            if (inputPath == null || inputPath.toString().trim().isEmpty()) {
-                // 输出错误并退出
-                System.err.println("fatal: 文件名不能为空");
-                System.exit(1);
+            while(inputPath == null || inputPath.toString().trim().isEmpty()) {
+                // 输出警告
+                System.err.println("warn: 文件名不能为空");
+                // 重新提示输入文件名
+                System.out.print("File name: ");
+                // 读取输入的文件名
+                inputPath = Paths.get(scanner.nextLine());
             }
             // 返回文件名及路径
             return inputPath;

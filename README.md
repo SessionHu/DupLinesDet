@@ -42,10 +42,11 @@
 - 读取失败
   - 未输入文件名
     <details>
-    <summary>退出代码 1</summary>
+    <summary>退出代码 1 或 提示重新输入</summary>
     <p>
     
     ```
+    warn: 文件名不能为空
     fatal: 文件名不能为空
     ```
     
