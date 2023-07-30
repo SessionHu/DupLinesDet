@@ -29,13 +29,18 @@ public class DuplicateLines {
             }
             // 读取文件
             Files.lines(filePath)
-                    // 跳过空行
-                    .filter(line -> !line.trim().isEmpty())
                     // 处理每一行
                     .forEach(line -> {
-                        // 将当前行及其行号添加到 HashMap 中
-                        lineMap.computeIfAbsent(line, k -> new ArrayList<>()).add(lineNumber.getAndIncrement());
+                        if(!line.trim().isEmpty()) {
+                            // 空行跳过并添加行数
+                            lineMap.computeIfAbsent(line, k -> new ArrayList<>()).add(lineNumber.getAndIncrement());
+                        } else {
+                            // 正常增加行数并添加记录
+                            lineNumber.getAndIncrement();
+                        }
                     });
+            // 输出文件总行数
+            System.out.println("Total lines: " + (lineNumber.get() - 1));
         } catch(IOException e) {
             // 发生异常时输出错误并退出
             System.err.println("fatal: 无法读取文件 " + filePath);
