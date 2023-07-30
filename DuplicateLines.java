@@ -22,7 +22,7 @@ public class DuplicateLines {
         AtomicInteger lineNumber = new AtomicInteger(1);
         try {
             // 检查是否为二进制文件
-            if (isBinaryFile(filePath)) {
+            if(isBinaryFile(filePath)) {
                 // 输出错误并退出
                 System.err.println("fatal: 文件 " + filePath + " 是二进制文件");
                 System.exit(2);
@@ -36,13 +36,13 @@ public class DuplicateLines {
                         // 将当前行及其行号添加到 HashMap 中
                         lineMap.computeIfAbsent(line, k -> new ArrayList<>()).add(lineNumber.getAndIncrement());
                     });
-        } catch (IOException e) {
+        } catch(IOException e) {
             // 发生异常时输出错误并退出
             System.err.println("fatal: 无法读取文件 " + filePath);
             System.exit(1);
         }
         // 检查是否有重复行
-        if (lineMap.values().stream().noneMatch(list -> list.size() > 1)) {
+        if(lineMap.values().stream().noneMatch(list -> list.size() > 1)) {
             // 输出提示信息
             System.out.println("info: 没有重复的行");
         } else {
@@ -55,11 +55,11 @@ public class DuplicateLines {
     }
     
     public static Path getFilePath(String... args) {
-        try (Scanner scanner = new Scanner(System.in)) {
+        try(Scanner scanner = new Scanner(System.in)) {
             // 初始化文件路径变量
             Path inputPath = null;
             // 检测命令行参数
-            if (args.length > 0) {
+            if(args.length > 0) {
                 // 使用第一个参数作为文件名
                 inputPath = Paths.get(args[0]);
                 // 输出文件名
@@ -81,7 +81,7 @@ public class DuplicateLines {
             }
             // 返回文件名及路径
             return inputPath;
-        } catch (NoSuchElementException e) {
+        } catch(NoSuchElementException e) {
             // 用户按下 Ctrl+D 的处理
             System.err.println("\nfatal: 文件名不能为空");
             System.exit(1);
@@ -91,12 +91,12 @@ public class DuplicateLines {
     
     public static boolean isBinaryFile(Path filePath) throws IOException {
         // 使用 Files.newInputStream 方法创建 InputStream 对象, 用于读取文件
-        try (InputStream inputStream = Files.newInputStream(filePath)) {
+        try(InputStream inputStream = Files.newInputStream(filePath)) {
             int ch;
             // 使用 read 方法读取文件中的字符
-            while ((ch = inputStream.read()) != -1) {
+            while((ch = inputStream.read()) != -1) {
                 // 检查是否为非文本字符
-                if (ch < 0x09 || (ch > 0x0D && ch < 0x20) || ch == 0x7F) {
+                if(ch < 0x09 || (ch > 0x0D && ch < 0x20) || ch == 0x7F) {
                     // 是非文本字符返回true
                     return true;
                 }
